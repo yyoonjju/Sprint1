@@ -1,0 +1,217 @@
+* {
+  text-decoration: none;
+  box-sizing: border-box;
+  max-height: 1000px;
+  margin: 0 0;
+}
+
+#home-section {
+  background: #faeed1;
+  flex-direction: row;
+  min-width: 800px;
+  min-height: 800px;
+}
+
+/*오른쪽 배너 라인*/
+.sidebar {
+  float: right;
+  margin-left: auto;
+  margin-right: 0;
+  margin-left: 150px;
+  width: 200px;
+}
+img {
+  border: 0;
+  height: auto;
+  width: 100%;
+}
+
+.aside_block {
+  background: white;
+  padding: 30px;
+  margin: 30px;
+  max-width: 360px;
+  width: 100%;
+  height: 100%;
+}
+
+/*메인화면에 오른쪽 글귀*/
+.sidebar_text {
+  background: white;
+  text-align: center;
+}
+
+/*위쪽 바로가기 nav*/
+h1,
+a {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.line:after,
+nav:after,
+.center:after,
+.box:after {
+  clear: both;
+  content: '.';
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+.top-nav li {
+  float: left;
+  list-style: none outside none;
+  cursor: pointer;
+}
+
+.top-nav li a {
+  padding: 1.25em;
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.top-nav li a:hover {
+  background: none repeat scroll 0 0 #f77300;
+}
+
+.header {
+  margin-bottom: 1.25em;
+  width: 100%;
+}
+
+nav {
+  background: none repeat scroll 0 0 #2a2b38;
+  position: relative;
+}
+
+/* 로그아웃 버튼 */
+form input[type='submit'] {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #2a2b38;
+  color: #fff;
+  border: none;
+  padding: 1.25em;
+  font-size: 1.1em;
+}
+
+form input[type='submit']:hover {
+  background-color: #f77300;
+}
+
+/*가운데 영역*/
+.textBody {
+  float: left;
+  align-items: center;
+  position: relative;
+  /*width: 500px;*/
+}
+
+.center {
+  float: none;
+  margin: 0 auto;
+  display: block;
+}
+
+body {
+  background: none repeat scroll 0 0 #faeed1;
+  width: 100%;
+}
+
+#home-section .post-text {
+  color: #000000;
+  font-size: 40px;
+  margin: 0 0 auto;
+  padding: 10px;
+  max-width: 600px;
+  width: 500px;
+  align-items: center;
+}
+.post-text.textBody {
+  width: 500px;
+}
+
+/*버튼 조정*/
+#add-button {
+  background: url('img/add.png') no-repeat;
+  width: 25%;
+  height: 25%;
+  border: none;
+  cursor: pointer;
+}
+
+#save-button {
+  margin-left: 90%;
+  background: url('img/BUTTON.png') no-repeat;
+  width: 10%;
+  height: 100px;
+  border: none;
+  cursor: pointer;
+}
+#logout-button {
+  cursor: pointer;
+}
+/*로고 설정*/
+a.logo {
+  color: #6b240c;
+  display: inline-block;
+  font-size: 50px;
+  font-weight: 900;
+  padding: 10px;
+}
+
+a.logo span {
+  color: #f77300;
+}
+/*푸터*/
+footer {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+/*글쓰기 구역 설정*/
+#titlename {
+  margin-top: 20px;
+  width: 900px;
+  max-width: 900px;
+  height: 50px;
+}
+
+.ck.ck-editor,
+#titlename {
+  position: relative;
+  max-width: 900px;
+
+  left: 50px;
+}
+#container {
+  max-width: 200px;
+  width: 100px;
+  margin: 20px auto;
+}
+.ck-editor__editable[role='textbox'] {
+  /* editing area */
+  min-height: 300px;
+}
+.ck-content .image {
+  /* block images */
+  max-width: 60%;
+  margin: 20px auto;
+}
+
+.bottom-btn {
+  position: relative;
+  left: 870px;
+}
+
+.right-list {
+  box-sizing: border-box;
+  position: absolute;
+  float: right;
+  left: 1035px;
+  top: 5%;
+  width: 30%;
+  background: white;
+}

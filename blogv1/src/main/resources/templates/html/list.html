@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Study Cafe</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" />
+    <script src="/js/build/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="css/responsee.css" />
+    <link rel="stylesheet" href="css/link.css" />
+  </head>
+  <body class="cafe">
+    <div class="wrapper">
+      <header class="header">
+        <div class="line">
+          <nav>
+            <div class="top-nav">
+              <p class="nav-text"></p>
+              <a class="logo" href="main"> Record<span> &nbsp;Your Life</span> </a>
+              <ul class="top-nav2">
+                <li>
+                  <a href="/main">main</a>
+                </li>
+                <li>
+                  <a href="/list">List</a>
+                </li>
+
+                <li>
+                  <a href="/memo">MEMO</a>
+                </li>
+                <!-- <li>
+                  <a href="/comunity">comunity</a>
+                </li> -->
+                <li>
+                  <p>
+                    <span th:text="${welcome}"> </span>
+                  </p>
+                  <form action="/logout" class="loged" method="get">
+                    <input type="submit" value="log out" />
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <section id="article-section" class="line">
+        <div class="mainBody">
+          <div class="one_ textBody">
+            <article class="header">
+              <div class="post-text">
+                <h1>&nbsp; List</h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성자</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="post : ${posts}">
+                      <td th:text="${post.id}"></td>
+                      <td th:text="${post.title}"></td>
+                      <td th:text="${post.memberId}"></td>
+                      <td th:text="${post.createdAt}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="line">
+      <footer>
+        <div>
+          <p>Copyright 2023 maid by sh. <br /></p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+.three {
+  height: 540px;
+}
+body {
+  margin: 0;
+  height: 2000px;
+}
+h1 {
+  font-size: 6em;
+  width: 258px;
+  color: #2a2b38;
+  font-family: 'Josefin Sans', sans-serif;
+  position: absolute;
+  top: 180px;
+  left: 150px;
+}
+h2 {
+  font-size: 3em;
+  width: 258px;
+  color: white;
+  font-family: 'Diphylleia', serif;
+  position: absolute;
+  top: 580px;
+  right: 250px;
+  animation: slide 4s ease-out;
+}
+.comment span {
+  margin-right: 15px; /* 단어 사이 간격 조절을 위한 마진 설정 */
+}
+
+@keyframes slide {
+  from {
+    right: -100px;
+    opacity: 0;
+  }
+  to {
+    right: 250px;
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  from {
+    right: 250px;
+    opacity: 1;
+  }
+  to {
+    right: -100px;
+    opacity: 0;
+  }
+}

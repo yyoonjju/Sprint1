@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Study Cafe</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="/css/intro.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main_page">
+      <div th:if="${NoneAccount != null}">
+        <script th:inline="javascript">
+          alert([[${NoneAccount}]]);
+        </script>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="aframe-container">
+        <a-scene>
+          <a-sky src="/img/back.jpg" rotation="0 -90 0"></a-sky>
+        </a-scene>
+      </div>
+      <h1>At the end,<br />&nbsp;&nbsp;&nbsp;of the day.</h1>
+      <h3>오늘 하루를<br />&nbsp;&nbsp;&nbsp;기록해보세요.</h3>
+      <div class="card-3d-wrap mx-auto">
+
+        <section>
+          <div class="section">
+            <div class="container">
+              <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                  <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                    <!-- 위에 스위치 버튼 관련 -->
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                      <div class="card-3d-wrapper">
+                        <div class="card-front">
+                          <div class="center-wrap">
+                            <div class="section text-center">
+                              <h4 class="mb-4 pb-3">Log In</h4>
+                              <form action="/login" method="post">
+                                <div class="form-group">
+                                  <input
+                                    type="text"
+                                    name="memberId"
+                                    class="form-style"
+                                    placeholder="Your ID"
+                                    id="logeid"
+                                    required
+                                    autocomplete="off" />
+                                  <i class="input-icon uil uil-at"></i>
+                                </div>
+                                <div class="form-group mt-2">
+                                  <input
+                                    type="password"
+                                    name="memberPw"
+                                    class="form-style"
+                                    placeholder="Your Password"
+                                    id="logpass"
+                                    required
+                                    autocomplete="off" />
+                                  <i class="input-icon uil uil-lock-alt"></i>
+                                </div>
+                                <input type="submit" value="Go" class="btn mt-4" />
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-back">
+                          <div class="center-wrap">
+                            <div class="section text-center">
+                              <h4 class="mb-4 pb-3">register</h4>
+                              <form action="/register" method="post">
+                                <div class="form-group">
+                                  <input
+                                    type="text"
+                                    name="memberId"
+                                    class="form-style"
+                                    placeholder="ID"
+                                    id="regid"
+                                    required
+                                    autocomplete="off" />
+                                  <i class="input-icon uil uil-user"></i>
+                                </div>
+                                <div class="form-group mt-2">
+                                  <input
+                                    type="text"
+                                    name="memberName"
+                                    class="form-style"
+                                    placeholder="Name"
+                                    id="regName"
+                                    required
+                                    autocomplete="off" />
+                                  <i class="input-icon uil uil-at"></i>
+                                </div>
+                                <div class="form-group mt-2">
+                                  <input
+                                    type="password"
+                                    name="memberPw"
+                                    class="form-style"
+                                    placeholder="Password"
+                                    id="regPw"
+                                    autocomplete="off"
+                                    required />
+                                  <i class="input-icon uil uil-lock-alt"></i>
+                                </div>
+                                <button type="submit" class="btn mt-4">Register</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="aframe-overlay"></div>
+  </body>
+</html>
