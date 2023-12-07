@@ -1,0 +1,11 @@
+<a href="/">홈</a>
+<form th:action="@{/myinfo}" method="post">
+    <div><p th:text="${session.user.userId}"></p></div>
+    <div><input type="hidden" name=userId th:value="${session.user.userId}"/></div>
+    <div>비밀번호<input type="password" name="userPassword" th:value="${session.user.userPassword}"/> </div>
+    <div>닉네임<input type="text" name="userNickname" th:value="${session.user.userNickname}"/> </div>
+    <div>전화번호<input type="tel" placeholder="010-1234-5678" name="phone" th:value="${session.user.phone}"/> </div>
+    <div>주소<input type="text" name="address" th:value="${session.user.address}"/> </div>
+    <button type="submit">수정</button>
+    <a th:href="@{/deleteuser?&(userId=${session.user.userId})}">회원탈퇴</a>
+</form>
