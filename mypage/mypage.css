@@ -31,13 +31,15 @@ input {
     outline: none;
 }
 
-button {
+a {
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 2px;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
+    margin: 2px;
+    text-align: center;
+    width: 30px;
 }
 
 fieldset {
@@ -46,4 +48,6 @@ fieldset {
 
 .button-container {
     text-align: right;
+    margin-top: 20px;
+    width: 100%;
 }
