@@ -1,4 +1,4 @@
 <a href="/myinfo">내정보</a>
 <a href="/subscribe">구독신청</a>
 <a href="/subinfo">구독정보</a>
-<a href="/counsel">1:1문의</a>
+<a th:href="@{/counsel(userId=${session.user.userId})}">1:1문의</a>

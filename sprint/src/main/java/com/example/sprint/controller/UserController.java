@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.sprint.model.QuestionBoard;
 import com.example.sprint.model.Service;
 import com.example.sprint.model.User;
+import com.example.sprint.repository.QuestionBoardRepository;
 import com.example.sprint.repository.ServiceRepository;
 import com.example.sprint.repository.UserRepository;
 
@@ -22,6 +24,8 @@ public class UserController {
     UserRepository userRepository;
     @Autowired
     ServiceRepository serviceRepository;
+    @Autowired
+    QuestionBoardRepository questionBoardRepository;
 
     @GetMapping("/")
     public String index(){
@@ -48,7 +52,7 @@ public class UserController {
         user.setAddress(address);
         userRepository.save(user);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
     
     @GetMapping("/login")
@@ -73,6 +77,13 @@ public class UserController {
             return "redirect:/";
         }
     }
+    // 로그아웃
+    @GetMapping("logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/login";
+    }
+
     @GetMapping("/myinfo")
     public String myinfo(){
         return "html/myinfo";
@@ -118,7 +129,75 @@ public class UserController {
         return "html/subinfo";
     }
     @GetMapping("/counsel")
-    public String counsel(){
+    public String counsel(
+        @RequestParam("userId") String userId,
+        Model model
+    ){
+        if ("admin".equals(userId)){
+            List<QuestionBoard> qBoardList=questionBoardRepository.findAllByOrderByBoardSeqDesc();
+            model.addAttribute("qBoardList", qBoardList);
+            System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆");
+            System.out.println(qBoardList);
+        }else{
+            List<QuestionBoard> qBoardList = questionBoardRepository.findByUserIdOrderByBoardSeqDesc(userId);
+            model.addAttribute("qBoardList", qBoardList);
+            System.out.println("★★★★★★★★★★★★★");
+            System.out.println(qBoardList);
+        }
         return "html/counsel";
     }
+    @GetMapping("/writeq")
+    public String writequestion(){
+        return "html/writeq";
+    }
+    @PostMapping("/writeq")
+    public String postWriteq(
+        @RequestParam("title") String title,
+        @RequestParam("content") String content,
+        @RequestParam("userId") String userId
+    ){
+        QuestionBoard questionBoard = new QuestionBoard();
+        questionBoard.setTitle(title);
+        questionBoard.setContent(content);
+        questionBoard.setState("대기 상태");
+        questionBoard.setUserId(userId);
+        questionBoardRepository.save(questionBoard);
+        return String.format("redirect:/counsel?userId=%s", userId);
+    }
+    @GetMapping("/modifyq")
+    public String modifyq(
+        @RequestParam("boardSeq") Long boardSeq,
+        Model model
+    ){
+        QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
+        model.addAttribute("qBoard",qBoard);
+        System.out.println("♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣");
+        System.out.println(qBoard);
+        return "html/modifyq";
+    }
+    @GetMapping("/deleteq")
+    public String deleteq(
+        @RequestParam("boardSeq") Long boardSeq,
+        @RequestParam("userId") String userId
+    ){
+        QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
+        questionBoardRepository.delete(qBoard);
+        return String.format("redirect:/counsel?userId=%s", userId);
+    }
+
+    // // 답변 작성
+    // @GetMapping("/writea")
+    // public String wirteAnswer(){
+    //     return "html/writea";
+    // }
+    // @PostMapping("/writea")
+    // public String postWriteAnswer(
+    //     @RequestParam("answer") String answer,
+    //     @RequestParam("boardSeq") Long boardSeq
+    // ){
+    //     QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
+    //     qBoard.setAnswer(answer);
+    //     questionBoardRepository.save(qBoard);
+    //     return "redirect:/counsel";
+    // }
 }

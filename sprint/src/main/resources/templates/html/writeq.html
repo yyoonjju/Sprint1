@@ -1,0 +1,10 @@
+<a href="/">홈</a>
+<a href="/counsel">문의게시판</a>
+
+<form action="/writeq" method="post">
+    제목<input name="title"/>
+    내용<textarea name="content"></textarea>
+    <!-- 날짜<input name="writedate" /> -->
+    <input type=hidden name="userId" th:value="${session.user.userId}">
+    <button type="submit">등록</button>
+</form>
