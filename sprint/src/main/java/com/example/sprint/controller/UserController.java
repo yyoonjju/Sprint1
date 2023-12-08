@@ -31,28 +31,29 @@ public class UserController {
     public String index(){
         return "html/index";
     }
-
-    @GetMapping("/createuser")
-    public String createuser(){
-        return "html/createuser";
-    }
-    @PostMapping("/createuser")
+    @PostMapping("/resister")
     public String postCreateuser(
     @RequestParam("userId") String userId,
     @RequestParam("userPassword") String userPassword,
     @RequestParam("userNickname") String userNickname,
     @RequestParam("phone") String phone,
-    @RequestParam("address") String address
+    @RequestParam("address") String address,
+    HttpSession session
     ){
-        User user = new User();
-        user.setUserId(userId);
-        user.setUserPassword(userPassword);
-        user.setUserNickname(userNickname);
-        user.setPhone(phone);
-        user.setAddress(address);
-        userRepository.save(user);
-
-        return "redirect:/login";
+        User check = userRepository.findByUserId(userId);
+        if (check == null){
+            User user = new User();
+            user.setUserId(userId);
+            user.setUserPassword(userPassword);
+            user.setUserNickname(userNickname);
+            user.setPhone(phone);
+            user.setAddress(address);
+            userRepository.save(user);
+            session.setAttribute("user", user);
+            return "redirect:/";
+        }else {
+            return "html/idalert";
+        } 
     }
     
     @GetMapping("/login")
@@ -115,24 +116,33 @@ public class UserController {
     }
     
     // 회원탈퇴
-    @GetMapping("/deleteuser")
-    public String deleteuser(
-        @RequestParam("userId") String userId
-    ){
-        User user=userRepository.findByUserId(userId);
-        userRepository.delete(user);
-        return "html/deleteuser";
+    @GetMapping("/usercheck")
+    public String usercheck(){
+        return "html/usercheck";
     }
+    @GetMapping("deleteuser")
+    public String deleteuser(
+        HttpSession session
+    ){
+        String userId=((User) session.getAttribute("user")).getUserId();
+        User user = userRepository.findByUserId(userId);
+        userRepository.delete(user);
+        return "redirect:/";
+    }
+
 
     @GetMapping("/subinfo")
     public String subinfo(){
         return "html/subinfo";
     }
+
     @GetMapping("/counsel")
     public String counsel(
-        @RequestParam("userId") String userId,
-        Model model
+        Model model,
+        HttpSession session
     ){
+        String userId=((User) session.getAttribute("user")).getUserId();
+
         if ("admin".equals(userId)){
             List<QuestionBoard> qBoardList=questionBoardRepository.findAllByOrderByBoardSeqDesc();
             model.addAttribute("qBoardList", qBoardList);
@@ -143,9 +153,35 @@ public class UserController {
             model.addAttribute("qBoardList", qBoardList);
             System.out.println("★★★★★★★★★★★★★");
             System.out.println(qBoardList);
+            System.out.println(userId);
         }
         return "html/counsel";
     }
+
+    // @GetMapping("/counsel")
+    // public String counsel(
+    //     @RequestParam(required=false) String userId,
+    //     Model model,
+    //     HttpSession session
+    // ){
+    //     if(userId==null){
+    //         System.out.println("null이당");
+    //         String userId=(String)session.user.userId;
+    //     }
+    //     else if ("admin".equals(userId)){
+    //         List<QuestionBoard> qBoardList=questionBoardRepository.findAllByOrderByBoardSeqDesc();
+    //         model.addAttribute("qBoardList", qBoardList);
+    //         System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆");
+    //         System.out.println(qBoardList);
+    //     }else{
+    //         List<QuestionBoard> qBoardList = questionBoardRepository.findByUserIdOrderByBoardSeqDesc(userId);
+    //         model.addAttribute("qBoardList", qBoardList);
+    //         System.out.println("★★★★★★★★★★★★★");
+    //         System.out.println(qBoardList);
+    //         System.out.println(userId);
+    //     }
+    //     return "html/counsel";
+    // }
     @GetMapping("/writeq")
     public String writequestion(){
         return "html/writeq";
@@ -185,19 +221,20 @@ public class UserController {
         return String.format("redirect:/counsel?userId=%s", userId);
     }
 
-    // // 답변 작성
-    // @GetMapping("/writea")
-    // public String wirteAnswer(){
-    //     return "html/writea";
-    // }
-    // @PostMapping("/writea")
-    // public String postWriteAnswer(
-    //     @RequestParam("answer") String answer,
-    //     @RequestParam("boardSeq") Long boardSeq
-    // ){
-    //     QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
-    //     qBoard.setAnswer(answer);
-    //     questionBoardRepository.save(qBoard);
-    //     return "redirect:/counsel";
-    // }
+    // 답변 작성
+    @GetMapping("/writea")
+    public String wirteAnswer(){
+        return "html/writea";
+    }
+    @PostMapping("/writea")
+    public String postWriteAnswer(
+        @RequestParam("answer") String answer,
+        @RequestParam("boardSeq") Long boardSeq
+    ){
+        QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
+        qBoard.setAnswer(answer);
+        qBoard.setState("답변 완료");
+        questionBoardRepository.save(qBoard);
+        return "redirect:/counsel";
+    }
 }

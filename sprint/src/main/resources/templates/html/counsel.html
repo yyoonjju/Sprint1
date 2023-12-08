@@ -37,7 +37,7 @@
     <tr th:each="QuestionBoard:${qBoardList}">
         <td th:text="${QuestionBoard.title}"></td>
         <td th:text="${QuestionBoard.content}"></td>
-        <td th:tet="${QuestionBoard.writedate}"></td>
+        <td th:text="${QuestionBoard.writedate}"></td>
         <td th:text="${QuestionBoard.state}"></td>
         <td th:if="${QuestionBoard.state eq '대기 상태'}">
             <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
