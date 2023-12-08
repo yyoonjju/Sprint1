@@ -76,3 +76,6 @@ body {
 .container .card:hover .content a {
     background: #2196f3;
 }
+.Basic {
+    line-height: 200%;
+}
