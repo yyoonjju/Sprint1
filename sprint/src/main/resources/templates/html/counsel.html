@@ -1,0 +1,50 @@
+<a href="/">홈</a>
+<h2>1:1문의</h2>
+<div  th:if="${session.user.userId eq 'admin'}">
+<table>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>답변</th>
+        <th>작성일</th>
+        <th>처리 상태</th>
+    </tr>
+    <tr th:each="QuestionBoard:${qBoardList}">
+        <td th:text="${QuestionBoard.boardSeq}"></td>
+        <td th:text="${QuestionBoard.title}"></td>
+        <td th:text="${QuestionBoard.content}"></td>
+        <td>
+            <form th:action="@{/writea}" method="post">
+                <textarea name="answer" th:text="${QuestionBoard.answer}"></textarea>
+                <input type="hidden" name="boardSeq" th:value="${QuestionBoard.boardSeq}">
+                <button type="submit">답변 작성</button>
+            </form>
+        </td>
+        <td th:text="${QuestionBoard.writedate}"></td>
+        <td th:text="${QuestionBoard.state}"></td>
+    </tr>
+</table>
+</div>
+<div th:unless="${session.user.userId eq 'admin'}">
+<table>
+    <tr>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성일</th>
+        <th>처리 상태</th>
+    </tr>
+    <tr th:each="QuestionBoard:${qBoardList}">
+        <td th:text="${QuestionBoard.title}"></td>
+        <td th:text="${QuestionBoard.content}"></td>
+        <td th:tet="${QuestionBoard.writedate}"></td>
+        <td th:text="${QuestionBoard.state}"></td>
+        <td th:if="${QuestionBoard.state eq '대기 상태'}">
+            <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
+            <a th:href="@{/deleteq(boardSeq=${QuestionBoard.boardSeq},userId=${session.user.userId})}">삭제</a>
+        </td>
+        <td th:unless="${QuestionBoard.state eq '대기 상태'}"></td>
+    </tr>
+</table>
+<a href="/writeq">1:1 문의하기</a>
+</div>
