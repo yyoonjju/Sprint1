@@ -15,11 +15,10 @@ public class QuestionBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardSeq;
+    private String userId;
     private String title;
     private String content;
     private String answer;
     private String state;
-    private String userId;
-
     private String writedate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 }

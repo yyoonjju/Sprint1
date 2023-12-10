@@ -5,6 +5,8 @@
     제목<input name="title"/>
     내용<textarea name="content"></textarea>
     <!-- 날짜<input name="writedate" /> -->
-    <input type=hidden name="userId" th:value="${session.user.userId}">
+    <input th:if="${session.user != null}" type=hidden name="userId" th:value="${session.user.userId}">
+    <input th:unless="${session.user != null}" type=hidden name="userId" value="guest">
+    <p th:if="${session.user==null}">게스트 회원은 문의글의 수정과 삭제가 불가하오니 확인하고 등록해주시기 바랍니다.</p>
     <button type="submit">등록</button>
 </form>

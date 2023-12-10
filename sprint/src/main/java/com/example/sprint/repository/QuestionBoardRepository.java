@@ -13,4 +13,6 @@ public interface QuestionBoardRepository extends JpaRepository<QuestionBoard,Lon
     List<QuestionBoard> findByUserIdOrderByBoardSeqDesc(String userId);
     List<QuestionBoard> findAllByOrderByBoardSeqDesc();
     QuestionBoard findByBoardSeq(Long boardSeq);
+
+    Long countBy(); //pagination
 }

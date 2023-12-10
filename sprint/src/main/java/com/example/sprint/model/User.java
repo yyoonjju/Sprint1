@@ -13,5 +13,4 @@ public class User {
     String userNickname;
     String phone;
     String address;
-    
 }
