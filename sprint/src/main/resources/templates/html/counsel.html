@@ -21,78 +21,64 @@
                 <li><a href="#" class="active">Detail</a></li>
                 <li><a href="/subpage">Sub</a></li>
                 <li><a href="/counsel">FAQ</a></li>
-                <li><a href="myinfo">MyInfo</a></li>
+                <li><a href="/myinfo">MyInfo</a></li>
             </ul>
         </header>
     </div>
-<!-- <div  th:if="${session.user.userId eq 'admin'}">
-<table>
-    <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>내용</th>
-        <th>답변</th>
-        <th>작성일</th>
-        <th>처리 상태</th>
-    </tr>
-    <tr th:each="QuestionBoard, state:${qBoardList}" th:if="(${state.index}>=${page*6-6})and(${state.index}<${page*6})">
-        <td th:text="${QuestionBoard.boardSeq}"></td>
-        <td th:text="${QuestionBoard.title}"></td>
-        <td th:text="${QuestionBoard.content}"></td>
-        <td>
-            <form th:action="@{/writea}" method="post">
-                <textarea name="answer" th:text="${QuestionBoard.answer}"></textarea>
+    <div th:if="${session.user.userId eq 'admin'}" class="write_list">
+        <div th:each="QuestionBoard, state : ${qBoardList}" class="dropdown" th:if="(${state.index}>=${page*6-6})and(${state.index}<${page*6})">
+            <div class="title_box">
+                <span th:text="${QuestionBoard.title}"></span>
+                <div class="answerYesNo" th:text="${QuestionBoard.state}"></div>
+            </div>
+            <form th:action="@{/writea}" method="post" class="form">
+                <div class="admin" th:text="관리자"></div>
+                <textarea class="admin_comment" name="answer" th:text="${QuestionBoard.answer}"></textarea>
                 <input type="hidden" name="boardSeq" th:value="${QuestionBoard.boardSeq}">
                 <button type="submit">답변 작성</button>
             </form>
-        </td>
-        <td th:text="${QuestionBoard.writedate}"></td>
-        <td th:text="${QuestionBoard.state}"></td>
-    </tr>
-</table>
-<th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
-    <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
-    <a th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
-</th:block>
-</div> -->
-<div th:each="QuestionBoard, state : ${qBoardList}" class="dropdown" th:if="(${state.index}>=${page*6-6})and(${state.index}<${page*6})">
-    <div class="title_box">
-        <span th:text="${QuestionBoard.title}"></span>
-        <div class="answerYesNo" th:text="${QuestionBoard.state}"></div>
+            <div class="option">
+                <div class="date" th:text="${QuestionBoard.writedate}"></div>
+                <div class="content" th:text="${QuestionBoard.content}"></div>
+            </div>
+        </div>
+        <div class="qnabtn_paging">
+            <a href="/writeq">문의하기</a>
+            <br>
+            <th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
+                <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                <a th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+            </th:block>
+        </div>
     </div>
-    <div class="option">
-        <div class="date" th:text="${QuestionBoard.writedate}"></div>
-        <div class="content" th:text="${QuestionBoard.content}"></div>
-        <div class="admin" th:text="${QuestionBoard.userId}"></div>
-        <div class="admin_comment" th:text="${QuestionBoard.boardSeq}"></div>
+    <div th:unless="${session.user.userId eq 'admin'}" class="write_list">
+        <div th:each="QuestionBoard, state : ${qBoardList}" class="dropdown" th:if="(${state.index}>=${page*6-6})and(${state.index}<${page*6})">
+            <div class="title_box">
+                <span th:text="${QuestionBoard.title}"></span>
+                <div class="answerYesNo" th:text="${QuestionBoard.state}"></div>
+            </div>
+            <div class="option">
+                <div class="date" th:text="${QuestionBoard.writedate}"></div>
+                <div class="content" th:text="${QuestionBoard.content}"></div>
+                <div th:if="${QuestionBoard.state eq '대기 상태'}">
+                    <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
+                    <a th:href="@{/deleteq(boardSeq=${QuestionBoard.boardSeq},userId=${session.user.userId})}">삭제</a>
+                </div>
+                <div th:unless="${QuestionBoard.state eq '대기 상태'}">
+                    <div class="admin" th:text="관리자"></div>
+                    <div class="admin_comment" th:text="${QuestionBoard.answer}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="qnabtn_paging">
+            <a href="/writeq">문의하기</a>
+            <br>
+            <th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
+                <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                <a th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+            </th:block>
+        </div>
     </div>
-</div><br>
-<!-- <div th:unless="${session.user.userId eq 'admin'}">
-<table>
-    <tr>
-        <th>제목</th>
-        <th>내용</th>
-        <th>답변</th>
-        <th>작성일</th>
-        <th>처리 상태</th>
-    </tr>
-    <tr th:each="QuestionBoard, state:${qBoardList}" th:if="(${state.index}>=${page*6-6})and(${state.index}<${page*6})">
-        <td th:text="${QuestionBoard.title}"></td>
-        <td th:text="${QuestionBoard.content}"></td>
-        <td th:text="${QuestionBoard.answer}"></td>
-        <td th:text="${QuestionBoard.writedate}"></td>
-        <td th:text="${QuestionBoard.state}"></td>
-        <td th:if="${QuestionBoard.state eq '대기 상태'}">
-            <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
-            <a th:href="@{/deleteq(boardSeq=${QuestionBoard.boardSeq},userId=${session.user.userId})}">삭제</a>
-        </td>
-        <td th:unless="${QuestionBoard.state eq '대기 상태'}"></td>
-    </tr>
-</table>
-<a href="/writeq">1:1 문의하기</a>
-<br>
-<th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
-    <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
-    <a th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
-</th:block>
-</div> -->
+<script defer src="/js/FAQ.js"></script>
+</body>
+</html>

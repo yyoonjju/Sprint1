@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/")
     public String index(){
-        return "html/index";
+        return "html/main_homepage";
     }
 
 

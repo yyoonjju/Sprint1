@@ -1,35 +1,57 @@
-@font-face {
-    src: url(/sprint/src/main/resources/static/fonts/Simplegrinches.ttf);
+  
+  @font-face {
+    src: url(../fonts/Simplegrinches.ttf);
     font-family: Simplegrinches;
-}
+  }
 
-header {
-    border-bottom: 1px solid white;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px;
-    color: white;
-    position: absolute;
-    z-index: 1;
-}
-
-ul {
-    list-style-type: none;
+  * {
     margin: 0;
     padding: 0;
-    display: flex; 
-}
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
 
-li {
-    margin: 0 10px; 
-}
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 100px;
+    z-index: 1;
+  }
 
-a {
+  .logo {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 2em;
     text-decoration: none;
-    color: inherit;
-}
+    /* font-family: Simplegrinches; */
+    letter-spacing: 2px;
+  }
 
-.logo {
-    font-family: Simplegrinches;
-}
+  ul {
+    position: relative;
+    display: flex;
+  }
+
+  li {
+    list-style: none;
+    margin: 0 20px;
+  }
+
+  li a {
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 4px 10px;
+    color: #fff;
+  }
+
+  li a:hover, li a.active {
+    background: #fff;
+    color: black;
+  }

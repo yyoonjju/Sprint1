@@ -35,6 +35,7 @@ body.active {
   justify-content: center;
   align-items: center;
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
 }
 
 .blueBg .box {

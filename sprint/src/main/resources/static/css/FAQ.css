@@ -36,7 +36,7 @@
     top: 70px;
     width: 800px;
     box-shadow: 0 30px 30px rgba(0,0,0,0.05);
-    /* display: none; */
+    display: none;
     pointer-events: none;
   }
 
@@ -80,5 +80,25 @@
     top: 22px;
     transform: rotate(-225deg);
   }
-
-  
+  .dropdown textarea {
+    z-index: 1;
+    pointer-events: auto;
+  }
+  .dropdown button {
+    z-index: 1;
+    pointer-events: auto;
+  }
+  .form {
+    position: rela;
+    left: 1000px;
+  }
+/* .write_list{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+} */
+.qnabtn_paging{
+    position: absolute;
+    top:600px;
+    left:780px;
+}

@@ -35,9 +35,7 @@
     object-fit: cover;
     box-sizing: border-box;
   }
-
   
-
   .container {
     position: relative;
     width: 100%;
@@ -55,6 +53,12 @@
     align-items: center;
     background-color: skyblue;
     scroll-snap-align: center;
+    background: #ff9800 url(../images/final.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: multiply;
+    /* z-index: 1; */
   }
 
   h3 {
@@ -112,6 +116,8 @@
     background-blend-mode: multiply;
   }
 
+  
+
   .content {
     position: absolute;
     top: 0;
@@ -134,3 +140,4 @@
     font-size: 14vw;
     margin-top: calc(100vh * var(--i));
   }
+  
