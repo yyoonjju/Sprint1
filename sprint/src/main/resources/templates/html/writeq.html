@@ -1,12 +1,27 @@
-<a href="/">홈</a>
-<a href="/counsel">문의게시판</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/subpage.css">
+    <link rel="stylesheet" type="text/css" href="/sprint/src/main/resources/static/css/writeq.css">
+</head>
 
-<form action="/writeq" method="post">
-    제목<input name="title"/>
-    내용<textarea name="content"></textarea>
+<body>
+<a class="home" href="/">홈</a>
+<a class="faq" href="/counsel">문의게시판</a>
+
+<form class="form" action="/writeq" method="post">
+    <div>
+    <p class="title">제목<input name="title"/></p>
+    </div>
+    <div>
+    <p class="content">내용<textarea name="content"></textarea></p>
+    </div>
     <!-- 날짜<input name="writedate" /> -->
     <input th:if="${session.user != null}" type=hidden name="userId" th:value="${session.user.userId}">
     <input th:unless="${session.user != null}" type=hidden name="userId" value="guest">
     <p th:if="${session.user==null}">게스트 회원은 문의글의 수정과 삭제가 불가하오니 확인하고 등록해주시기 바랍니다.</p>
     <button type="submit">등록</button>
 </form>
+</body>
+</html>
