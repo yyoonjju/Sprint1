@@ -1,5 +1,45 @@
-<p>비밀번호를 찾고자하는 아이디를 입력해주세요.</p>
-<form action="/findid" method="post">
-    아이디 <input name="userId" />
-    <button type="submit">아이디 확인</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/findid.css">
+    </head>
+<header>
+    <div>
+        <a class="logo">New Car</a>
+    </div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Sub</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</header>
+
+<body>
+    <header>
+        <div>
+            <a class="logo">New Car</a>
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Sub</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+    <div class="form">
+        <div>
+        <h3>아이디 찾기</h3>
+        </div>
+        <div class="q">비밀번호를 찾고자하는 아이디를 입력해주세요.</div>
+        <div>
+            <form action="/findid" method="post">
+                아이디 <input name="userId" /><br><br><br><br>
+                <button type="submit">아이디 확인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
