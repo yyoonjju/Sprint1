@@ -1,2 +1,7 @@
-<input th:value="${qBoard.title}"/> 
-<textarea th:text="${qBoard.content}"></textarea>
+<a href="/">홈</a>
+<a href="/counsel">문의게시판</a>
+<form action="/writeq" method="post">
+    <input th:value="${qBoard.title}"/> 
+    <textarea th:text="${qBoard.content}"></textarea>
+    <button type="submit">등록</button>
+</form>
