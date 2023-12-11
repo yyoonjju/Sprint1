@@ -62,10 +62,11 @@ li a:hover, li a.active {
 }
   
 .main {
-  margin-top: 20%;
+  margin-top: 20vh;
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 form {
@@ -77,20 +78,29 @@ form {
   margin: 10px;
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  width: 50%;
+  width: 70%;
 }
 
-.title, .content {
+.content {
   background: white;
   margin-bottom: 20px;
-  margin-top: px;
+  margin-top: 20px;
+}
+
+.title {
+  margin-top: 25px;
 }
 
 .button {
   text-align: right;
   margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .intitle, .incontent {
   background: white;
+}
+
+.caution {
+  padding: 10px;
 }
