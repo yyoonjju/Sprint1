@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" href="/sprint/src/main/resources/static/css/mypage.css">
     <title>내 정보 페이지</title>
 </head>
 <body>
-
+<div>
     <header>
-        <h1>내 정보</h1>
+        
+        
+        <div>
+            <p class="logo">New Car</a>
+        </div>
+        <ul>
+            <li><p class="headertext" href="#">Home</p></li>
+            <li><p class="headertext" href="#">About</p></li>
+            <li><p class="headertext" href="#">Sub</p></li>
+            <li><p class="headertext" href="#">Contact</p></li>
+        </ul>
     </header>
+</div>
+<div>
+    
     <section>
+        <h1>내 정보</h1>
         <form class="userinfo" th:action="@{/myinfo}" method="post">
             <fieldset>
                 <legend>
@@ -50,6 +64,8 @@
             </div>
         </form>
     </section>
+</div>
+<div>
     <section th:if="${serviceHistories!=null}">
         <table>
             <tr>
@@ -64,5 +80,6 @@
             </tr>
         </table>
     </section>
+</div>
 </body>
 </html>
