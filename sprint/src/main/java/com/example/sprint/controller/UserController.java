@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/")
     public String index(){
-        return "html/index";
+        return "html/main_homepage";
     }
 
 
@@ -305,6 +305,24 @@ public class UserController {
         System.out.println("♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣");
         System.out.println(qBoard);
         return "html/modifyq";
+    }
+    @PostMapping("/modifyq")
+    public String postModifyq(
+        @RequestParam("title") String title,
+        @RequestParam("content") String content,
+        @RequestParam("userId") String userId
+    ){
+        QuestionBoard questionBoard = new QuestionBoard();
+        questionBoard.setTitle(title);
+        questionBoard.setContent(content);
+        questionBoard.setState("대기 상태");
+        questionBoard.setUserId(userId);
+        questionBoardRepository.save(questionBoard);
+        if("guest".equals(userId)){
+            return "redirect:/guestboard";
+        } else {
+            return String.format("redirect:/counsel?userId=%s", userId);
+        }
     }
     // 문의글 삭제
     @GetMapping("/deleteq")

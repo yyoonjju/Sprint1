@@ -37,7 +37,9 @@ CREATE TABLE SERVICE_HISTORY (
 INSERT INTO SERVICE(subtype, price, term) VALUES("basic",100000, 30);
 INSERT INTO SERVICE(subtype, price, term) VALUES("premium",130000, 30);
 
-DELETE FROM service_history;
-DROP TABLE service_history;
-DROP TABLE service;
+# user 테이블 데이터 삽입
+INSERT INTO user(user, user_password, user_nickname, phone, address) VALUES("aaa","aaa", "aaa", "aaa", "aaa");
+
+INSERT INTO question_board(user_id, title, content, state, writedate) VALUES("aaa", "문의드립니다.", "문의내용", "대기 상태", "2013-12-11");
+INSERT INTO question_board(user_id, title, content, state, answer,  writedate) VALUES("aaa", "문의드립니다.", "문의내용", "답변 완료", "답변드립니다.", "2013-12-11");
 COMMIT;
