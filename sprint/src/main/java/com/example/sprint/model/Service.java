@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 public class Service {
     @Id
-    String subtypeCode;
 	String subtype;
 	Long price;
 	Long term;

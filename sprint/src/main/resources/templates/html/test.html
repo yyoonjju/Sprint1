@@ -1,0 +1,13 @@
+<!-- <div th:text="${qBoardList}"></div>
+<div th:text="'전체 글 ('+${cnt}+')'"></div> -->
+<div th:each="i,state:${qBoardList}" th:if="${state.index}>=${page*6-6} and ${state.index}<${page*6}">
+    <div th:text="${state.index}+'번째 인덱스'"></div>
+    <div th:text="${i}"></div>
+    <div th:text="${state}"></div>
+</div>
+<th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
+    <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/test(page=${pageNumber})}" th:text="${pageNumber}"></a>
+    <a th:unless="${page}==${pageNumber}" th:href="@{/test(page=${pageNumber})}" th:text="${pageNumber}"></a>
+    <!-- <a th:if="${page eq pageNumber}" style="font-weight: bold;" th:href="@{/test(page=${pageNumber})}" th:text="${pageNumber}"></a>
+    <a th:unless="${page eq pageNumber}" th:href="@{/test(page=${pageNumber})}" th:text="${pageNumber}"></a> -->
+</th:block>

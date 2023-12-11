@@ -1,9 +1,6 @@
 <a href="/">홈</a>
-<div th:each="service:${serviceList}">
-    <div th:text="${service.subtype}"></div>
-    <div th:text="${service.price}"></div>
-    <div th:text="${service.term}"></div>
-</div>
-<form action="" method="post">
+<p>신청이 완료되었습니다.</p>
+<p th:text="'구독종류 : ' + ${serviceHistory.subtype}"></p>
+<p th:text="'구독시작일 : ' + ${serviceHistory.subStart}"></p>
+<p th:text="'구독종료일 : ' + ${serviceHistory.subEnd}"></p>
 
-</form>
