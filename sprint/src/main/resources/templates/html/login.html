@@ -11,21 +11,21 @@
       <div class="blueBg">
         <div class="box signin">
           <h2>계정이 있으십니까?</h2>
-          <button type="button" class="signinBtn">Sign in</button>
+          <button type="button" class="signinBtn">로그인</button>
         </div>
         <div class="box signup">
           <h2>계정이 없으십니까?</h2>
-          <button type="button" class="signupBtn">Sign up</button>
+          <button type="button" class="signupBtn">회원가입</button>
         </div>
       </div>
       <div class="formBx">
         <div class="form signinform">
           <form action="/login" method="post">
             <!-- 폼액션 ! -->
-            <h3>log in</h3>
-            <input type="text" placeholder="UserId" name="userId" />
-            <input type="password" placeholder="password" name="userPassword" />
-            <input type="submit" value="login" />
+            <h3>로그인</h3>
+            <input type="text" placeholder="아이디" name="userId" />
+            <input type="password" placeholder="비밀번호" name="userPassword" />
+            <input type="submit" value="로그인" />
             <a href="/findid" class="forgot">비밀번호를 잊으셨나요?</a>
           </form>
         </div>
@@ -33,12 +33,12 @@
         <div class="form signupform">
           <form action="/resister" method="post">
             <!-- 폼액션 ! -->
-            <h3>register</h3>
-            <input type="text" placeholder="UserId" name="userId" />
-            <input type="password" placeholder="password" name="userPassword" />
-            <input type="text" placeholder="UserNickame" name="userNickname" />
-            <input type="tel" placeholder="PhoneNumber" name="phone"/>
-            <input type="text" placeholder="address" name="address" />
+            <h3>회원가입</h3>
+            <input type="text" placeholder="아이디" name="userId" />
+            <input type="password" placeholder="비밀번호" name="userPassword" />
+            <input type="text" placeholder="이름" name="userNickname" />
+            <input type="tel" placeholder="전화번호" name="phone"/>
+            <input type="text" placeholder="주소" name="address" />
             <input type="submit" value="Register" />
           </form>
         </div>

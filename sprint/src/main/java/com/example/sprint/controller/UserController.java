@@ -177,7 +177,7 @@ public class UserController {
     public String subpage(){
         return "html/subpage";
     }
-    @PostMapping("/subpage")
+    @PostMapping("/subcheck")
     public String postSubpage(
         @RequestParam("subtype") String subtype,
         HttpSession session
@@ -189,6 +189,14 @@ public class UserController {
         serviceHistoryRepository.save(serviceHistory);
         return "redirect:/subscribe";
     }
+    @GetMapping("/subcheck")
+        public String subcheck(
+            @RequestParam("subtype") String subtype,
+            Model model
+        ){
+            model.addAttribute("subtype", subtype);
+            return "html/subcheck";
+        }
     @GetMapping("/subscribe")
     public String subscribe(
         HttpSession session,
@@ -259,11 +267,12 @@ public class UserController {
         List <QuestionBoard> qBoardList = questionBoardRepository.findByUserIdOrderByBoardSeqDesc(userId);
         model.addAttribute("qBoardList", qBoardList);
         
-        long cnt = questionBoardRepository.countBy();
+        long cnt = qBoardList.size();
         model.addAttribute("cnt", cnt);
 
         int startPage = (page-1)/10*10+1;
         int endPage = (int)Math.ceil(cnt/6);
+        model.addAttribute("cnt", cnt);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("page", page);
@@ -281,13 +290,19 @@ public class UserController {
         @RequestParam("content") String content,
         HttpSession session
     ){
-        String userId=((User) session.getAttribute("user")).getUserId();
+        String userId;
+        if (session.getAttribute("user")==null){
+            userId = "guest";
+        }else {
+            userId=((User) session.getAttribute("user")).getUserId();
+        }
         QuestionBoard questionBoard = new QuestionBoard();
         questionBoard.setTitle(title);
         questionBoard.setContent(content);
         questionBoard.setState("대기 상태");
         questionBoard.setUserId(userId);
         questionBoardRepository.save(questionBoard);
+
         if("guest".equals(userId)){
             return "redirect:/guestboard";
         } else {
@@ -364,33 +379,8 @@ public class UserController {
         return "redirect:/counsel";
     }
 
-
-    //test
-
-    @GetMapping("/test")
-    public String test(
-        HttpSession session,
-        Model model,
-        @RequestParam(defaultValue = "1") int page
-    ){
-        String userId=((User) session.getAttribute("user")).getUserId();
-        List<QuestionBoard> qBoardList=questionBoardRepository.findAllByOrderByBoardSeqDesc();
-        model.addAttribute("qBoardList", qBoardList);
-
-        long cnt = questionBoardRepository.countBy();
-        model.addAttribute("cnt", cnt);
-
-        int startPage = (page-1)/10*10+1;
-        int endPage = startPage + 5; // 교수님은 이렇게 하셨는데 int endPage = (int)Math.ceil(cnt/6.0); 이렇게 한 이유가 있나??
-        model.addAttribute("startPage",startPage);
-        model.addAttribute("endPage", endPage);
-        model.addAttribute("page", page);
-
-        return "html/test";
-    }
-
-    @GetMapping("/dynamicisland")
-    public String dynamicIsland(){
-        return "html/iphone";
+    @GetMapping("/detail")
+    public String detail(){
+        return "html/detail";
     }
 }

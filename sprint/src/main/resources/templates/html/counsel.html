@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,22 @@
     <link rel="stylesheet" type="text/css" href="/css/FAQ.css">
     <link rel="stylesheet" type="text/css" href="/css/FAQ_header.css">
 </head>
+
 <body>
     <div class="header_container">
         <header id="navbar">
-            <a href="/" class="logo">New Car</a>       
+            <a href="/" class="logo"><img src="images/newcar.png"></a>
             <ul th:if="${session.user == null}">
-                <li><a href="#" class="active">Detail</a></li>
-                <li><a href="/subpage">Sub</a></li>
-                <li><a href="/guestboard">FAQ</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/detail" class="active">소개</a></li>
+                <li><a href="/subpage">구독</a></li>
+                <li><a href="/guestboard">문의</a></li>
+                <li><a href="/login">로그인</a></li>
             </ul>
             <ul th:unless="${session.user == null}">
-                <li><a href="#" class="active">Detail</a></li>
-                <li><a href="/subpage">Sub</a></li>
-                <li><a href="/counsel">FAQ</a></li>
-                <li><a href="/myinfo">MyInfo</a></li>
+                <li><a href="/detail" class="active">소개</a></li>
+                <li><a href="/subpage">구독</a></li>
+                <li><a href="/counsel">문의</a></li>
+                <li><a href="/myinfo">내소개</a></li>
             </ul>
         </header>
     </div>
@@ -61,21 +63,21 @@
                 <div class="date" th:text="${QuestionBoard.writedate}"></div>
                 <div class="content" th:text="${QuestionBoard.content}"></div>
                 <div th:if="${QuestionBoard.state eq '대기 상태'}" class="modify_delete">
-                    <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
-                    <a th:href="@{/deleteqcheck(boardSeq=${QuestionBoard.boardSeq})}">삭제</a>
+                    <a class="a-amend" th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
+                    <a class="a-eliminate" th:href="@{/deleteqcheck(boardSeq=${QuestionBoard.boardSeq})}">삭제</a>
                 </div>
                 <div th:unless="${QuestionBoard.state eq '대기 상태'}">
-                    <div class="admin" th:text="관리자"></div>
+                    <div class="admin"><div class="div-admin" th:text="관리자"></div></div>
                     <div class="admin_comment" th:text="${QuestionBoard.answer}"></div>
                 </div>
             </div>
         </div>
         <div class="qnabtn_paging">
-            <a href="/writeq">문의하기</a>
+            <a class="btn-writeq" href="/writeq">문의하기</a>
             <br>
             <th:block th:each="pageNumber:${#numbers.sequence(startPage, endPage)}">
-                <a th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
-                <a th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                <a class="paging-btn" th:if="${page}==${pageNumber}" style="font-weight: bold;" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                <a class="paging-btn" th:unless="${page}==${pageNumber}" th:href="@{/counsel(page=${pageNumber})}" th:text="${pageNumber}"></a>
             </th:block>
         </div>
     </div>

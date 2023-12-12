@@ -94,3 +94,60 @@
   .modify_delete {
     pointer-events: auto;
   }
+  .title {
+    margin: 2% 5% 5% 5%;
+    width:90%;
+    padding: 10px 14px 10px 14px;
+  }
+  .content {
+    margin: 0 5% 30px 5%;
+    width:90%;
+    height:350px;
+    padding: 10px 14px 10px 14px;
+  }
+  .modify_delete button{
+    all:unset;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    cursor: pointer;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    height: 24px;
+    line-height: 27px;
+    min-width: 54px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: pre;
+  }
+  .modify_delete a {
+    all:unset;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    cursor: pointer;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    height: 24px;
+    line-height: 27px;
+    min-width: 54px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: pre;
+}
+button.btn-amend{
+    margin-right: 10px;
+}
+.modify_delete {
+    display: flex;
+    justify-content: center;
+}
+div.option {
+    padding-bottom: 30px;
+}
