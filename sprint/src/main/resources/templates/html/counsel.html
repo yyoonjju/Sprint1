@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ 페이지</title>
     <link rel="stylesheet" type="text/css" href="/css/FAQ.css">
-    <link rel="stylesheet" type="text/css" href="/sprint/src/main/resources/static/css/FAQ_header.css">
+    <link rel="stylesheet" type="text/css" href="/css/FAQ_header.css">
 </head>
 <body>
     <div class="header_container">
@@ -31,15 +31,15 @@
                 <span th:text="${QuestionBoard.title}"></span>
                 <div class="answerYesNo" th:text="${QuestionBoard.state}"></div>
             </div>
-            <form th:action="@{/writea}" method="post" class="form">
-                <div class="admin" th:text="관리자"></div>
-                <textarea class="admin_comment" name="answer" th:text="${QuestionBoard.answer}"></textarea>
-                <input type="hidden" name="boardSeq" th:value="${QuestionBoard.boardSeq}">
-                <button type="submit">답변 작성</button>
-            </form>
             <div class="option">
                 <div class="date" th:text="${QuestionBoard.writedate}"></div>
                 <div class="content" th:text="${QuestionBoard.content}"></div>
+                <form th:action="@{/writea}" method="post" class="form">
+                    <div class="admin" th:text="${QuestionBoard.userId}"></div>
+                    <textarea class="admin_comment" name="answer" th:text="${QuestionBoard.answer}"></textarea>
+                    <input type="hidden" name="boardSeq" th:value="${QuestionBoard.boardSeq}">
+                    <button type="submit">답변 작성</button>
+                </form>
             </div>
         </div>
         <div class="qnabtn_paging">
@@ -60,9 +60,9 @@
             <div class="option">
                 <div class="date" th:text="${QuestionBoard.writedate}"></div>
                 <div class="content" th:text="${QuestionBoard.content}"></div>
-                <div th:if="${QuestionBoard.state eq '대기 상태'}">
+                <div th:if="${QuestionBoard.state eq '대기 상태'}" class="modify_delete">
                     <a th:href="@{/modifyq(boardSeq=${QuestionBoard.boardSeq})}">수정</a>
-                    <a th:href="@{/deleteq(boardSeq=${QuestionBoard.boardSeq},userId=${session.user.userId})}">삭제</a>
+                    <a th:href="@{/deleteqcheck(boardSeq=${QuestionBoard.boardSeq})}">삭제</a>
                 </div>
                 <div th:unless="${QuestionBoard.state eq '대기 상태'}">
                     <div class="admin" th:text="관리자"></div>

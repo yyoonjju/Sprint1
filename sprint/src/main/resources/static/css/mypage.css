@@ -4,16 +4,20 @@ body {
     box-sizing: border-box;
 }
 
-header {
+/* header {
     color: black;
     text-align: center;
-    margin-top: 70px;
     margin-bottom: 70px;
-}
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+} */
 
 section {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 70px auto;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
@@ -32,7 +36,6 @@ input {
 }
 
 a {
-    background-color: #333;
     color: white;
     padding: 2px;
     border: none;
@@ -51,4 +54,51 @@ fieldset {
     text-align: right;
     margin-top: 20px;
     width: 100%;
+}
+
+@font-face {
+    src: url(/fonts/Simplegrinches.ttf);
+    font-family: Simplegrinches;
+}
+
+header {
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: center; 
+    padding: 10px;
+    color: black;
+    position: absolute;
+    z-index: 1;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+}
+
+li {
+    margin: 0 10px; 
+}
+
+.headertext {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo {
+    font-family: Simplegrinches;
+}
+
+a.edit-button {
+    background-color: black;
+}
+
+a.unreg-button {
+    background-color: black;
+}
+
+a.logout-button {
+    background-color: black;
 }
