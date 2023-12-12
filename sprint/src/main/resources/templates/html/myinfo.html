@@ -1,68 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="/css/FAQ_header.css">
     <title>내 정보 페이지</title>
 </head>
-<body>
 
-    <header>
-        <h1>내 정보</h1>
-    </header>
-    <section>
-        <form class="userinfo" th:action="@{/myinfo}" method="post">
-            <fieldset>
-                <legend>
-                    <label for="id">아이디</label>
-                </legend>
-                <p class="id" th:text="${session.user.userId}"></p>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <label for="pw">비밀번호</label>
-                </legend>
-                <input type="password" class="pw" name="userPassword" th:value="${session.user.userPassword}"/>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <label for="name">닉네임</label>
-                </legend>
-                <input type="text" class="name" name="userNickname" th:value="${session.user.userNickname}" />
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <label for="pnum">전화번호</label>
-                </legend>
-                <input type="text" class="pnum" name="phone" th:value="${session.user.phone}" />
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <label for="address">주소</label>
-                </legend>
-                <input type="text" class="address" name="address" th:value="${session.user.address}" />
-            </fieldset>
-            <div class="button-container">
-                <a type="submit" class="edit-button">수정</a>
-                <a class="logout-button" th:href="@{/logout}">로그아웃</a>
-                <a class="unreg-button" th:href="@{/usercheck}">회원탈퇴</a>
-            </div>
-        </form>
-    </section>
-    <section th:if="${serviceHistories!=null}">
-        <table>
-            <tr>
-                <td>구독종류</td>
-                <td>구독시작일</td>
-                <td>구독완료일</td>
-            </tr>
-            <tr th:each="serviceHistory:${serviceHistories}">
-                <td th:text="${serviceHistory.subtype}"></td>
-                <td th:text="${serviceHistory.subStart}"></td>
-                <td th:text="${serviceHistory.subEnd}"></td>
-            </tr>
-        </table>
-    </section>
+<body>
+    <div class="header_container">
+        <header id="navbar">
+            <a href="/" class="logo">New Car</a>
+            <ul th:if="${session.user == null}">
+                <li><a href="#" class="active">Detail</a></li>
+                <li><a href="/subpage">Sub</a></li>
+                <li><a href="/guestboard">FAQ</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <ul th:unless="${session.user == null}">
+                <li><a href="#" class="active">Detail</a></li>
+                <li><a href="/subpage">Sub</a></li>
+                <li><a href="/counsel">FAQ</a></li>
+                <li><a href="/myinfo">MyInfo</a></li>
+            </ul>
+        </header>
+    </div>
+    <div>
+        <section>
+            <h1>내 정보</h1>
+            <form class="userinfo" th:action="@{/myinfo}" method="post">
+                <fieldset>
+                    <legend>
+                        <label for="id">아이디</label>
+                    </legend>
+                    <p class="id" th:text="${session.user.userId}"></p>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="pw">비밀번호</label>
+                    </legend>
+                    <input type="password" class="pw" name="userPassword" th:value="${session.user.userPassword}" />
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="name">닉네임</label>
+                    </legend>
+                    <input type="text" class="name" name="userNickname" th:value="${session.user.userNickname}" />
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="pnum">전화번호</label>
+                    </legend>
+                    <input type="text" class="pnum" name="phone" th:value="${session.user.phone}" />
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="address">주소</label>
+                    </legend>
+                    <input type="text" class="address" name="address" th:value="${session.user.address}" />
+                </fieldset>
+                <div class="button-container">
+                    <a type="submit" class="edit-button">수정</a>
+                    <a class="logout-button" th:href="@{/logout}">로그아웃</a>
+                    <a class="unreg-button" th:href="@{/usercheck}">회원탈퇴</a>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div>
+        <section th:if="${serviceHistories!=null}">
+            <table>
+                <tr>
+                    <td>구독종류</td>
+                    <td>구독시작일</td>
+                    <td>구독완료일</td>
+                </tr>
+                <tr th:each="serviceHistory:${serviceHistories}">
+                    <td th:text="${serviceHistory.subtype}"></td>
+                    <td th:text="${serviceHistory.subStart}"></td>
+                    <td th:text="${serviceHistory.subEnd}"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
 </body>
+
 </html>

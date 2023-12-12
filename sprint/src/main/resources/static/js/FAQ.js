@@ -1,6 +1,9 @@
 
 document.querySelectorAll('.dropdown').forEach(function(dropdown, index) {
-    dropdown.onclick = function() {
+    let titleBox = dropdown.querySelector('.title_box');
+    let option = dropdown.querySelector('.option');
+
+    titleBox.onclick = function(event) {
         let isActive = dropdown.classList.contains('active');
 
         dropdown.classList.toggle('active');
@@ -21,16 +24,20 @@ document.querySelectorAll('.dropdown').forEach(function(dropdown, index) {
                 dropdown.style.transform = `translateY(0)`;
             }
 
+            let optionHeight = option.clientHeight + 50;
             let nextDropdown = dropdown.nextElementSibling;
             while (nextDropdown) {
-                nextDropdown.style.transform = `translateY(300px)`;
+                nextDropdown.style.transform = `translateY(${optionHeight}px)`;
                 nextDropdown = nextDropdown.nextElementSibling;
             }
+
         } else {
             let siblings = Array.from(dropdown.parentNode.children).filter(child => child !== dropdown);
             siblings.forEach(function(otherDropdown) {
                 otherDropdown.style.transform = 'translateY(0)';
             });
         }
-    }
+
+        event.stopPropagation();
+    };
 });

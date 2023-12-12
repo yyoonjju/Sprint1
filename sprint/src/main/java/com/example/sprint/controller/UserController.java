@@ -228,22 +228,21 @@ public class UserController {
         @RequestParam(defaultValue="1") int page
     ){
         String userId=((User) session.getAttribute("user")).getUserId();
-
+        int cnt;
         if ("admin".equals(userId)){
             List<QuestionBoard> qBoardList=questionBoardRepository.findAllByOrderByBoardSeqDesc();
             model.addAttribute("qBoardList", qBoardList);
+            cnt=qBoardList.size();    
             
         }else{
             List<QuestionBoard> qBoardList = questionBoardRepository.findByUserIdOrderByBoardSeqDesc(userId);
             model.addAttribute("qBoardList", qBoardList);
-
+            cnt=qBoardList.size();
         }
 
-        long cnt = questionBoardRepository.countBy();
-        model.addAttribute("cnt", cnt);
-
         int startPage = (page-1)/10*10+1;
-        int endPage = (int)Math.ceil(cnt/6.0);
+        int endPage = (int)Math.ceil(cnt/6);
+        model.addAttribute("cnt", cnt);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("page", page);
@@ -264,7 +263,7 @@ public class UserController {
         model.addAttribute("cnt", cnt);
 
         int startPage = (page-1)/10*10+1;
-        int endPage = (int)Math.ceil(cnt/6.0);
+        int endPage = (int)Math.ceil(cnt/6);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("page", page);
@@ -280,8 +279,9 @@ public class UserController {
     public String postWriteq(
         @RequestParam("title") String title,
         @RequestParam("content") String content,
-        @RequestParam("userId") String userId
+        HttpSession session
     ){
+        String userId=((User) session.getAttribute("user")).getUserId();
         QuestionBoard questionBoard = new QuestionBoard();
         questionBoard.setTitle(title);
         questionBoard.setContent(content);
@@ -291,7 +291,7 @@ public class UserController {
         if("guest".equals(userId)){
             return "redirect:/guestboard";
         } else {
-            return String.format("redirect:/counsel?userId=%s", userId);
+            return "redirect:/counsel";
         }
     }
     // 문의글 수정
@@ -310,8 +310,9 @@ public class UserController {
     public String postModifyq(
         @RequestParam("title") String title,
         @RequestParam("content") String content,
-        @RequestParam("userId") String userId
+        HttpSession session
     ){
+        String userId=((User) session.getAttribute("user")).getUserId();
         QuestionBoard questionBoard = new QuestionBoard();
         questionBoard.setTitle(title);
         questionBoard.setContent(content);
@@ -321,15 +322,27 @@ public class UserController {
         if("guest".equals(userId)){
             return "redirect:/guestboard";
         } else {
-            return String.format("redirect:/counsel?userId=%s", userId);
+            return "redirct:/counsel";
         }
     }
     // 문의글 삭제
+    @GetMapping("/deleteqcheck")
+    public String deletecheck(
+        @RequestParam("boardSeq") Long boardSeq,
+        Model model
+    ){
+        System.out.println("################################");
+        System.out.println(boardSeq);
+        System.out.println("################################");
+        model.addAttribute("boardSeq", boardSeq);
+        return "html/deleteqcheck";
+    }
     @GetMapping("/deleteq")
     public String deleteq(
         @RequestParam("boardSeq") Long boardSeq,
-        @RequestParam("userId") String userId
+        HttpSession session
     ){
+        String userId=((User) session.getAttribute("user")).getUserId();
         QuestionBoard qBoard=questionBoardRepository.findByBoardSeq(boardSeq);
         questionBoardRepository.delete(qBoard);
         return String.format("redirect:/counsel?userId=%s", userId);
@@ -376,5 +389,8 @@ public class UserController {
         return "html/test";
     }
 
-    
+    @GetMapping("/dynamicisland")
+    public String dynamicIsland(){
+        return "html/iphone";
+    }
 }
