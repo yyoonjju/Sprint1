@@ -1,0 +1,151 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+body {
+    background-color: #F5F5F5;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.div-logo {
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.div-logo img{
+    width:400px;
+}
+.div-logo #logo{
+    margin:0;
+    color: #c8b6a6;
+    font-weight: bold;
+    font-size: 50px;
+}
+.main {
+    width:700px;
+    height:350px;
+    margin-top:20px;
+    font-family: 'Simplegrinches';
+    text-align: center;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    /* border: 1px solid #B4B4B3; */
+}
+div.main{
+    padding-top:60px;
+    padding-bottom:60px;
+}
+p.txt {
+    padding-bottom:10px
+}
+p.txt.p.txt1 {
+    margin-top: 40px;
+}
+.txt {
+    margin:0;
+}
+.a-cancel{
+    all:unset;
+    cursor:pointer;
+}
+.div-btnflex {
+    margin-top:20px;
+}
+.reg-button {
+    all:unset;
+    margin-bottom: 50px;
+}
+h1 {
+    padding-bottom:20px;
+}
+div.div-btnflex{
+    margin-top: 50px;
+}
+a.a-cancel{
+    margin-left:10px;
+    background-color: rgba(51, 51, 51, 0.05);
+    /* background-color: #c8b6a6; */
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+button.reg-btn{
+    all:unset;
+    cursor:pointer;
+    /* background-color: rgba(51, 51, 51, 0.05); */
+    background-color: #c8b6a6;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.p-completion{
+    margin-bottom:0;
+    margin-top: 60px;
+}
+.div-idcheck{
+    margin-top:10px
+}
+.ps-btn{
+    all:unset;
+    cursor:pointer;
+    /* background-color: rgba(51, 51, 51, 0.05); */
+    background-color: #c8b6a6;
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    margin-left: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.p-id{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
