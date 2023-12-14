@@ -189,7 +189,6 @@ public class UserController {
             ServiceHistory serviceHistory = shList.get(0);
             serviceHistory.setSubtype("Premium");
             serviceHistoryRepository.save(serviceHistory);
-
             return "redirect:/subscribe";
         } else {
             return "redirect:/subfail";
