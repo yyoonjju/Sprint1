@@ -7,9 +7,6 @@
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
-#move:hover {
-  cursor: pointer;
-}
 header {
   position: absolute;
   top: 0;
@@ -57,4 +54,7 @@ li a:hover,
 li a.active {
   background: #fff;
   color: black;
+}
+#move:hover {
+  cursor: pointer;
 }
