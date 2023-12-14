@@ -181,12 +181,12 @@ a.a-amend{
     justify-content: center;
     width:100%;
 }
-.div_writelist {
-    display: flex;
-    flex-direction: column;
-}
 .div-writeqflex {
     display: flex;
     justify-content: center;
+}
+.div_list{
+    display: flex;
+    flex-direction: column;
 }
 
