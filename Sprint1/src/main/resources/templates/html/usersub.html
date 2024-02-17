@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ 페이지</title>
+    <link rel="stylesheet" type="text/css" href="/css/FAQ.css" />
+    <link rel="stylesheet" type="text/css" href="/css/FAQ_header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/usersub.css" />
+  </head>
+
+  <body>
+    <div class="header_container">
+      <header id="navbar">
+        <a href="/" class="logo"><img src="images/newcar.png" /></a>
+        <ul th:if="${session.user == null}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/guestboard">문의</a></li>
+          <li><a href="/login">로그인</a></li>
+        </ul>
+        <ul th:if="${session.user != null} and ${session.user.userId!='admin'}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/counsel">문의</a></li>
+          <li><a href="/myinfo">내정보</a></li>
+        </ul>
+        <ul th:if="${session.user != null} and ${session.user.userId=='admin'}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/counsel">문의</a></li>
+          <li><a href="/usersub">구독내역 관리</a></li>
+        </ul>
+      </header>
+    </div>
+    <div class="div_sectionwrapper">
+      <table>
+        <tr>
+          <th>번호</th>
+          <th>아이디</th>
+          <th>구독종류</th>
+          <th>구독시작일</th>
+          <th>구독종료일</th>
+        </tr>
+        <tr th:each="sh, state : ${serviceHistories}">
+          <td th:text="${sh.historySeq}"></td>
+          <td th:text="${sh.userId}"></td>
+          <td th:text="${sh.subtype}"></td>
+          <td th:text="${sh.subStart}"></td>
+          <td th:text="${sh.subEnd}"></td>
+        </tr>
+      </table>
+      <div class="button-container">
+        <a class="logout-button" th:href="@{/logout}">로그아웃</a>
+      </div>
+    </div>
+  </body>
+</html>

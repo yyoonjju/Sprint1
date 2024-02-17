@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/subscribe.css" />
+</head>
+
+<body>
+    <div class="div-logo">
+        <a href="/" class="logo"><img src="images/newcar.png" ></a>
+        <!-- <p id="logo">NEW CAR</p> -->
+    </div>
+    <div class="main">
+        <h2>구독 신청이 완료되었습니다.</h2>
+        <p class="p-completion" style="font-size: 23px; font-weight:550; color: #3b3a3a ;" th:text="${serviceHistory.userId} + '님의 구독 정보' "></p>
+        <p th:text="'구독종류 : ' + ${serviceHistory.subtype}"></p>
+        <p th:text="'구독시작일 : ' + ${serviceHistory.subStart}"></p>
+        <p th:text="'구독종료일 : ' + ${serviceHistory.subEnd}"></p>
+        <div class="div-btnflex">
+            <a href="/subpage" class="a-ok">확인</a>
+            <a href="javascript:history.back();" class="a-cancel">취소</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  width: 550px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.223);
+}
+
+label {
+  display: block;
+  margin: 0;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  border: none;
+  outline: none;
+}
+
+a {
+  color: white;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
+  margin: 2px;
+  text-align: center;
+  width: 30px;
+  text-decoration: none;
+}
+
+/* fieldset {
+      margin-top: 20px;
+  } */
+
+.button-container {
+  justify-content: left;
+  margin-top: 20px;
+  width: 100%;
+}
+
+@font-face {
+  src: url(/fonts/Simplegrinches.ttf);
+  font-family: Simplegrinches;
+}
+
+header {
+  border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: black;
+  position: absolute;
+  z-index: 1;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin: 0 10px;
+}
+
+.headertext {
+  text-decoration: none;
+  color: inherit;
+}
+
+.edit-button {
+  background-color: #c8b6a6;
+  padding: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  margin-left: 262px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover,
+.unreg-button:hover,
+.logout-button:hover {
+  color: #fff;
+}
+
+a.unreg-button {
+  background-color: lightgrey;
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+a.logout-button {
+  color: black;
+  background-color: lightgray;
+  padding: 5px;
+  border-radius: 10px;
+}
+p.id {
+  margin: 35px 50px 0 0;
+  text-align: center;
+}
+.div-h1myinfo {
+  display: flex;
+  justify-content: space-between;
+}
+.div-id {
+  display: flex;
+}
+.sec-sublist {
+  display: flex;
+  justify-content: center;
+}
+.sec-sublist th {
+  padding: 20px 30px 10px 30px;
+}
+.sec-sublist td {
+  padding-bottom: 5px;
+  padding-left: 30px;
+}

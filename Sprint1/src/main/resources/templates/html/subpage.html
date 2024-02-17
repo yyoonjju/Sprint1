@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>구독 안내</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/FAQ_header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/subpage.css" />
+  </head>
+  <body>
+    <div class="header_container">
+      <header id="navbar">
+        <a href="/" class="logo"><img src="images/newcar.png" /></a>
+        <ul th:if="${session.user == null}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/guestboard">문의</a></li>
+          <li><a href="/login">로그인</a></li>
+        </ul>
+        <ul th:if="${session.user != null} and ${session.user.userId!='admin'}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/counsel">문의</a></li>
+          <li><a href="/myinfo">내정보</a></li>
+        </ul>
+        <ul th:if="${session.user != null} and ${session.user.userId=='admin'}">
+          <li><a href="/detail" class="active">소개</a></li>
+          <li><a href="/subpage">구독</a></li>
+          <li><a href="/counsel">문의</a></li>
+          <li><a href="/usersub">구독내역 관리</a></li>
+        </ul>
+      </header>
+    </div>
+    <div class="container">
+      <div class="card">
+        <div class="box">
+          <div class="content">
+            <h3>Basic</h3>
+            <h4 class="bottom">10만원</h4>
+            <p class="line_height1">
+              무제한 호출<br />
+              1주 무료 체험
+            </p>
+            <a th:if="${session.user==null}" href="/login" class="reg-btn">신청하기</a>
+            <a th:unless="${session.user==null}" href="/subcheck?subtype=Basic" class="reg-btn">신청하기</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="box">
+          <div class="content">
+            <h3>Premium</h3>
+            <h4>13만원</h4>
+            <p class="line_height2">
+              무제한 호출<br />
+              1주 무료 체험<br />
+              스마트 호출<br />
+              사고 시 100% 자사 책임
+            </p>
+            <a th:if="${session.user==null}" href="/login" class="reg-btn">신청하기</a>
+            <a th:unless="${session.user==null}" href="/subcheck?subtype=Premium" class="reg-btn">신청하기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

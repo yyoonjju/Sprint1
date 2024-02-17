@@ -1,0 +1,193 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+#navbar {
+  margin: 0;
+}
+.dropdown {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  right: 120px;
+}
+
+.dropdown.active ::before {
+  top: 22px;
+  transform: rotate(-225deg);
+}
+
+.title_box ::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: solid 2px black;
+  right: 20px;
+  top: 15px;
+  z-index: 1;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: rotate(-45deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.dropdown .title_box {
+  position: absolute;
+  width: 600px;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 12px 48px 12px 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown .option {
+  position: absolute;
+  top: 70px;
+  width: 600px;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  display: none;
+}
+
+.dropdown.active .option {
+  display: block;
+}
+
+.content {
+  padding: 12px 20px;
+}
+
+.admin {
+  background-color: #dddddd;
+  padding: 40px 20px 12px 20px;
+  margin-bottom: 0;
+}
+
+.admin_comment {
+  padding: 12px 20px 60px 20px;
+  background-color: #dddddd;
+}
+
+.date {
+  padding: 20px 12px 12px 476px;
+}
+
+.modify_delete {
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.paging-btn {
+  all: unset;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+a.btn-writeq {
+  background-color: #c8b6a6;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 10px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+a.btn-writeq:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+a.btn-writeq:active {
+  background-color: #f7f7f7;
+  border-color: #000000;
+  transform: scale(0.96);
+}
+
+a.btn-writeq:disabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.modify_delete a {
+  all: unset;
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  height: 24px;
+  line-height: 27px;
+  min-width: 54px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+}
+.a-amend {
+  margin-right: 10px;
+}
+
+.div-admin {
+  margin-bottom: 0;
+  text-align: center;
+  width: 70px;
+  background-color: #dddddd;
+}
+
+.div_pageflex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.div-writeqflex {
+  display: flex;
+  justify-content: center;
+}
+.div_writelist {
+  margin-top: 120px;
+  position: relative;
+  /* height: 530px; */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#txtarea_admin {
+  width: 600px;
+  margin: 0;
+}

@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 0 20px;
+}
+.div_sectionwrapper {
+  margin: 0;
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+table {
+  height: 500px;
+  width: 700px;
+  padding: 20px;
+  margin: 0;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+}
+
+th {
+  padding-bottom: 20px;
+}
+
+td {
+  padding: 0 20px 7px 20px;
+}
+.logout-button {
+  position: relative;
+  float: right;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 4px 10px;
+  color: black;
+  background: #c8b6a6;
+  left: 250px;
+}
